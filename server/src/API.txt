@@ -1,0 +1,89 @@
+/*NO MORE COMMUNITY, NO MORE JOIN METHOD, FOCUS ON USER BASE, ALL USER CAN CONNECT TO EACH OTHER ---> Store data in s3*/
+
+API: 
+
+User: 
+{
+    _id: ObjectId,
+    username: String,
+    password: String, ( don't store it in here )
+    profileImage: String, 
+    address: String, 
+    gender: String, 
+    phoneNumber: String, 
+
+    posts: [ObjectId],
+    comments: [ObjectId],
+    followed: [String],
+
+    ranking:{
+        position: Number,
+        point: Number, 
+    }
+
+}
+
+Post: {
+
+     creator:{
+        id: ObjectId, 
+        username: String, 
+        profileImage: String
+     }
+
+     content: HTML Type, 
+
+     uploadFile: [
+        {
+            type: String,
+            link: String,
+        }
+     ]
+
+}
+
+Comment:{
+
+    postId: String,
+    parentId: String,
+    childrenId: [String],
+
+      creator:{
+        id: ObjectId, 
+        username: String, 
+        profileImage: String
+     }
+
+     content: HTML Type, 
+
+     uploadFile: [
+        {
+            type: String,
+            link: String,
+        }
+     ]
+}
+
+
+/*
+
+Current plan executing function: 
+ - Rate limiter
+ - Cache 
+ - Improve security
+
+Testing plan: 
+- Stress testing, 
+- Bottleneck testing, 
+
+*/
+
+/*    
+
+Future service: 
+- Recommend Friends
+- Recommend Post and short content
+- Notification System
+- Search engine 
+
+*/
